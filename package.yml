@@ -1,0 +1,17 @@
+package: lazycat.community.app.mkcert-web
+version: 2.0.0
+name: mkcert Web UI
+description: A web interface for managing a local mkcert certificate authority.
+min_os_version: 1.5.0
+homepage: https://github.com/jeffcaldwellca/mkcertWeb
+author: jeffcaldwellca
+permissions:
+  required:
+    - net.internet
+locales:
+  zh:
+    name: mkcert Web UI
+    description: 用于管理本地 mkcert 证书颁发机构的 Web 界面。
+  en:
+    name: mkcert Web UI
+    description: A web interface for managing a local mkcert certificate authority.

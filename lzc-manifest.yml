@@ -1,0 +1,44 @@
+application:
+  subdomain: mkcert-web
+  background_task: true
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://mkcert-web:3000/
+  injects:
+    - id: login-autofill
+      when:
+        - /login.html
+      do:
+        - src: builtin://simple-inject-password
+          params:
+            user: "{{ .U.admin_username }}"
+            password: "{{ .U.admin_password }}"
+services:
+  mkcert-web:
+    # ghcr.io/jeffcaldwellca/mkcertweb:2.0.0
+    image: registry.lazycat.cloud/czyt/czyt/mkcertweb:3f19328e48444082
+    environment:
+      - PORT=3000
+      - HTTPS_PORT=3443
+      - HOST=0.0.0.0
+      - ENABLE_HTTPS=false
+      - NODE_ENV=production
+      - THEME_MODE=dark
+      - ENABLE_AUTH=true
+      - AUTH_USERNAME={{ .U.admin_username }}
+      - AUTH_PASSWORD={{ .U.admin_password }}
+      - SESSION_SECRET={{ stable_secret "mkcert-web#session_secret" | substr 0 32 }}
+      - CLI_RATE_LIMIT_WINDOW=900000
+      - CLI_RATE_LIMIT_MAX=10
+      - API_RATE_LIMIT_WINDOW=900000
+      - API_RATE_LIMIT_MAX=100
+      - AUTH_RATE_LIMIT_WINDOW=900000
+      - AUTH_RATE_LIMIT_MAX=5
+    binds:
+      - /lzcapp/var/certificates:/app/certificates
+      - /lzcapp/var/data:/app/data
+      - /lzcapp/var/ca:/home/nodejs/.local/share/mkcert
+    setup_script: |
+      chown -R nodejs:nodejs /app/certificates /app/data /home/nodejs/.local/share/mkcert

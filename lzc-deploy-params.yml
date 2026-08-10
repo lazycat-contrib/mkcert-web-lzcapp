@@ -1,15 +1,15 @@
 params:
   - id: admin_username
     type: string
-    name: "admin username"
-    description: "admin username"
+    name: "Admin Username"
+    description: "Username for the mkcert Web UI administrator"
     default_value: "admin"
 
   - id: admin_password
-    type: string
-    name: "admin password"
-    description: "admin password"
-    default_value: "admin"
+    type: secret
+    name: "Admin Password"
+    description: "Password for the mkcert Web UI administrator"
+    default_value: "$random(len=20)"
 
 locales:
   zh:
