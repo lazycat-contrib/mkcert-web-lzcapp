@@ -1,5 +1,5 @@
 package: lazycat.community.app.mkcert-web
-version: 4.3.1
+version: 4.3.3
 name: mkcert Web UI
 description: A web interface for managing a local mkcert certificate authority.
 min_os_version: 1.5.0
