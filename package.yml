@@ -1,6 +1,6 @@
 package: lazycat.community.app.mkcert-web
 license: GPL-3.0
-version: 4.3.4
+version: 4.4.2
 name: mkcert Web UI
 description: A web interface for managing a local mkcert certificate authority.
 min_os_version: 1.5.0
