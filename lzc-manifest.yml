@@ -18,8 +18,8 @@ application:
 services:
   mkcert-web:
     # ghcr.io/jeffcaldwellca/mkcertweb:2.0.0
-    # upstream: ghcr.io/jeffcaldwellca/mkcertweb:v4.4.2
-    image: registry.lazycat.cloud/czyt/jeffcaldwellca/mkcertweb:54ec4451a8410183
+    # upstream: ghcr.io/jeffcaldwellca/mkcertweb:v5.0.0
+    image: registry.lazycat.cloud/czyt/jeffcaldwellca/mkcertweb:75ee60c1b980242c
     environment:
       - PORT=3000
       - HTTPS_PORT=3443
